@@ -1,0 +1,49 @@
+﻿<Window x:Class="GraphicalEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GraphicalEditor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+	<Grid>
+		<!--Разработать ПО минимальный граф редактор 
+		(все основные инструменты (карандаш, линия, эллипс, заливка, выбор цвета) разместить 
+		в виде пиктограмм в элементе (ToolBar, самостоятельное изучение компонента), 
+		Предусмотреть главное меню (компонент Menu) c пунктами: открыть, сохранить как.-->
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Menu>
+			<MenuItem Header="File">
+				<MenuItem Header="Open"/>
+				<MenuItem Header="Save as"/>
+			</MenuItem>
+			<MenuItem Header="Help"></MenuItem>
+		</Menu>
+		<Grid Grid.Row="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<ToolBar>
+				<Button x:Name="button_pencil" Click="button_pencil_Click">Pencil</Button>
+				<Button x:Name="button_line" Click="button_line_Click">Line</Button>
+				<Button x:Name="button_ellipse" Click="button_ellipse_Click">Ellipse</Button>
+				<Separator/>
+				<Button>Fill</Button>
+				<Separator/>
+				<Button x:Name="button_chooseColor" Click="button_chooseColor_Click">Choose color</Button>
+			</ToolBar>
+			<Grid Grid.Row="1">
+				<Grid.ColumnDefinitions>
+				</Grid.ColumnDefinitions>
+
+				<Canvas x:Name="Canvas_Main" Background="Transparent" MouseLeftButtonUp="Canvas_Main_MouseLeftButtonUp" MouseMove="Canvas_Main_MouseMove" MouseLeftButtonDown="Canvas_Main_MouseLeftButtonDown">
+
+				</Canvas>
+			</Grid>
+		</Grid>
+	</Grid>
+</Window>
