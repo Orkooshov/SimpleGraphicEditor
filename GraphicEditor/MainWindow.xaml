@@ -38,7 +38,7 @@
 					<Image Source="Resources/ellipse.png"/>
 				</Button>
 				<Separator/>
-				<Button>
+				<Button x:Name="button_fill" Click="button_fill_Click">
 					<Image Source="Resources/color_fill.png"/>
 				</Button>
 				<Separator/>

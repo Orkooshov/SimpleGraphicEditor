@@ -119,7 +119,7 @@ namespace GraphicEditor
 		{
 			isPaint = false;
 			currentLine = null;
-			currentEllipse = null;
+			//currentEllipse = null;
 		}
 
 		public void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -169,6 +169,14 @@ namespace GraphicEditor
 		private void colorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
 		{
 			brush = new SolidColorBrush((Color)colorPicker.SelectedColor);
+		}
+
+		private void button_fill_Click(object sender, RoutedEventArgs e)
+		{
+			if (currentEllipse != null)
+			{
+				currentEllipse.Fill = brush;
+			}
 		}
 	}
 }
