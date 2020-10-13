@@ -6,7 +6,7 @@
 		xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:GraphicEditor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Graphic Editor" Height="450" Width="800">
 	<Grid>
 		<!--Разработать ПО минимальный граф редактор 
 		(все основные инструменты (карандаш, линия, эллипс, заливка, выбор цвета) разместить 
