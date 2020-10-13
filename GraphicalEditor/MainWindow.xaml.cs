@@ -29,12 +29,13 @@ namespace GraphicalEditor
 
 		enum DrawTool
 		{
-			None, Pencil, Line, Ellipse
+			NotSelected, Pencil, Line, Ellipse
 		}
 		DrawTool drawTool;
 		SolidColorBrush brush = new SolidColorBrush(Color.FromRgb(0, 0, 0));
 		Point currentPoint = new Point();
 		Line currentLine = null;
+		Ellipse currentEllipse = null;
 		bool isPaint = false;
 
 		private void button_pencil_Click(object sender, RoutedEventArgs e)
@@ -74,6 +75,10 @@ namespace GraphicalEditor
 					currentLine.X2 = point.X;
 					currentLine.Y2 = point.Y;
 					break;
+				case DrawTool.Ellipse:
+					currentEllipse.Width = Math.Abs(point.X - Canvas.GetLeft(currentEllipse));
+					currentEllipse.Height = Math.Abs(point.Y - Canvas.GetTop(currentEllipse));
+					break;
 			}
 		}
 
@@ -98,12 +103,23 @@ namespace GraphicalEditor
 				}
 				catch (Exception) { }
 			}
+			if (drawTool == DrawTool.Ellipse)
+			{
+				currentEllipse = new Ellipse();
+				currentEllipse.Stroke = brush;
+
+				Canvas.SetLeft(currentEllipse, currentPoint.X);
+				Canvas.SetTop(currentEllipse, currentPoint.Y);
+
+				Canvas_Main.Children.Add(currentEllipse);
+			}
 		}
 
 		private void Canvas_Main_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			isPaint = false;
 			currentLine = null;
+			currentEllipse = null;
 		}
 
 		public void MenuItem_Click(object sender, RoutedEventArgs e)
